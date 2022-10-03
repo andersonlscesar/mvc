@@ -52,6 +52,11 @@ class Router
         return $this->addRoute('GET', $route, $params);
     }
 
+    public function post($route, $params = [])
+    {
+        return $this->addRoute('POST', $route, $params);
+    }
+
     private function getUri()
     {
         $uri = $this->request->getUri();

@@ -3,8 +3,12 @@ require_once __DIR__.'/vendor/autoload.php';
 
 use App\Http\Router;
 use App\Utils\View;
+use App\Common\Environment;
 
-define('URL', 'http://localhost/mvc');
+Environment::load(__DIR__.'/.env');
+
+
+define('URL', getenv('URL'));
 
 View::loadGlobalVars([
     'URL' => URL

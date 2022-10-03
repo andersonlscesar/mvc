@@ -11,6 +11,8 @@ $router->get('/sobre', [
 ]);
 
 
-$router->get('/pagina/{idPagina}/{action}', [
-    fn($idPagina, $action) => new Response(200, "Página {$idPagina} - {$action}")
+$router->get('/depoimentos', [
+    fn() => new Response(200, Pages\Depoimento::renderContent())
 ]);
+
+// Rota para cadastro de dados
