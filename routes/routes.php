@@ -16,3 +16,8 @@ $router->get('/depoimentos', [
 ]);
 
 // Rota para cadastro de dados
+
+$router->post('/depoimentos', [
+    fn($request) => new Response(200, Pages\Depoimento::insertTestimony($request))
+]);
+
