@@ -8,10 +8,7 @@ class Depoimento extends Page
 {
     public static function renderContent($request) 
     {
-        echo '<pre>';
-        print_r($request);
-        echo '</pre>';
-        exit;
+   
         $content = View::render('pages/depoimento', [
             'depoimentos'   => self::getTestimonyItems()
         ]);
