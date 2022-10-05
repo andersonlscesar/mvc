@@ -12,7 +12,7 @@ $router->get('/sobre', [
 
 
 $router->get('/depoimentos', [
-    fn() => new Response(200, Pages\Depoimento::renderContent())
+    fn($request) => new Response(200, Pages\Depoimento::renderContent($request))
 ]);
 
 // Rota para cadastro de dados
