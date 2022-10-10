@@ -3,6 +3,7 @@ namespace App\Controller\Pages;
 
 use App\Utils\View;
 use App\Model\Entity\Depoimento as EntityDepoimento;
+use App\Common\Pagination;
 
 class Depoimento extends Page
 {
@@ -32,6 +33,9 @@ class Depoimento extends Page
         $itens = '';
         $obTestimony = new EntityDepoimento;
         $depoimentos = $obTestimony->getTestimonies(null, ' id DESC ');
+        $quantidadeDepoimentos = EntityDepoimento::getQtdTestimonies();
+  
+        // $pagination = new Pagination($quantidadeDepoimentos, );
 
         foreach($depoimentos as $depoimento) {
             $itens .= View::render('pages/testimonies/itens', [

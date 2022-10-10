@@ -26,4 +26,9 @@ class Depoimento
     {
         return (new Database('depoimentos'))->select($where, $order, $limit, $fields)->fetchAll(PDO::FETCH_CLASS, self::class);
     }
+
+    public static function getQtdTestimonies()
+    {
+        return (new Database('depoimentos'))->select(null, null, null, 'COUNT(*) totalDepoimentos')->fetchObject()->totalDepoimentos;
+    }
 }
