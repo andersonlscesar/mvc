@@ -1,0 +1,23 @@
+<h1>Depoimento</h1>
+
+<section>
+    {{depoimentos}}
+</section>
+
+
+<section>
+    <h3>Envie seu depoimento</h3>
+    <form method="POST">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" name="nome" required>
+        </div>
+
+        <div class="form-group">
+            <label for="mensagem">Mensagem</label>
+           <textarea name="mensagem" id="" cols="30" rows="5" class="form-control"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2">Enviar</button>
+    </form>
+</section>

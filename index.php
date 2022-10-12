@@ -1,6 +1,11 @@
 <?php
-require_once __DIR__.'/vendor/autoload.php';
+include_once __DIR__.'/includes/config.php';
 
-use App\Controller\Pages\Home;
+use App\Http\Router;
 
-echo Home::renderContent();
+$router = new Router(URL);
+
+include_once __DIR__.'/routes/routes.php';
+
+$router->run()->sendResponse();
+
