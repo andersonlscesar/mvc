@@ -11,7 +11,7 @@ class Depoimento extends Page
     {
    
         $content = View::render('pages/depoimento', [
-            'depoimentos'   => self::getTestimonyItems()
+            'depoimentos'   => self::getTestimonyItems($request)
         ]);
         return parent::renderMainLayout('Depoimento', $content);
     }
@@ -28,14 +28,14 @@ class Depoimento extends Page
         exit;
     }
 
-    private static function getTestimonyItems()
+    private static function getTestimonyItems($request)
     {
         $itens = '';
         $obTestimony = new EntityDepoimento;
-        $depoimentos = $obTestimony->getTestimonies(null, ' id DESC ');
         $quantidadeDepoimentos = EntityDepoimento::getQtdTestimonies();
-  
-        // $pagination = new Pagination($quantidadeDepoimentos, );
+        $get = $request->getQueryParams();  
+        $pagination = new Pagination($quantidadeDepoimentos, $get['pagina'] ?? 1);
+        $depoimentos = $obTestimony->getTestimonies(null, ' id DESC ', $pagination->slice());        
 
         foreach($depoimentos as $depoimento) {
             $itens .= View::render('pages/testimonies/itens', [

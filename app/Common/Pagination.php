@@ -22,5 +22,26 @@ class Pagination
         $this->currentPage = $this->currentPage <= $this->totalPages ? $this->currentPage : $this->totalPages;
     }
 
+    public function slice()
+    {
+        $offset = $this->itemsPerPage * ($this->currentPage - 1);
+        return $offset.','.$this->itemsPerPage;
+    }
+
+    public function calculateButtons()
+    {
+        if($this->totalPages == 1) return [];
+        $paginas = [];
+
+        for($i = 1; $i <= $this->totalPages; $i++) {
+            $paginas[] = [
+                'pagina'    => $i,
+                'current'   => $i == $this->currentPage
+            ];
+        }
+
+        return $paginas;
+    }
+
 
 }
