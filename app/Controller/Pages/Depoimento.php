@@ -11,10 +11,12 @@ class Depoimento extends Page
     {
    
         $content = View::render('pages/depoimento', [
-            'depoimentos'   => self::getTestimonyItems($request)
+            'depoimentos'   => self::getTestimonyItems($request, $pagination),
+            'pagination'    => Parent::getPagination($request, $pagination)
         ]);
         return parent::renderMainLayout('Depoimento', $content);
     }
+
 
     public static function insertTestimony($request)
     {
@@ -28,7 +30,7 @@ class Depoimento extends Page
         exit;
     }
 
-    private static function getTestimonyItems($request)
+    private static function getTestimonyItems($request, &$pagination)
     {
         $itens = '';
         $obTestimony = new EntityDepoimento;

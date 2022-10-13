@@ -109,4 +109,10 @@ class Router
             return new Response($e->getCode(), $e->getMessage());
         }
     }
+
+    public function getCurrentURL()
+    {
+   
+        return $this->url.$this->getUri();
+    }
 }
