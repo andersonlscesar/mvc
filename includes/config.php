@@ -20,3 +20,9 @@ View::loadGlobalVars([
 Queue::setMap([
     'maintenance'   => App\Http\Middleware\Maintenance::class
 ]);
+
+// Define os middlewares que serão carregados em todas as rotas
+
+Queue::setDefault([
+    'maintenance'
+]);
