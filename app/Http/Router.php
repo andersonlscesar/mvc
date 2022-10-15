@@ -4,6 +4,7 @@ namespace App\Http;
 use Closure;
 use Exception;
 use ReflectionFunction;
+use App\Http\Middleware\Queue;
 
 class Router
 {
@@ -34,6 +35,9 @@ class Router
                 $params['controller'] = $value;
             }
         }
+
+        $params['middlewares'] = $params['middlewares'] ?? [];
+
         $params['variables'] = [];
         $patternVariables = '/{(.*?)}/';
 
@@ -101,9 +105,9 @@ class Router
                 $name = $parameter->getName();
                 $args[$name] = $route['variables'][$name] ?? '';
             }
-      
+            
          
-            return call_user_func_array($route['controller'], $args);
+            return (new Queue($route['middlewares'], $route['controller'], $args))->next($this->request);
 
         } catch(Exception $e) {
             return new Response($e->getCode(), $e->getMessage());
