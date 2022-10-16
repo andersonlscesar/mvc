@@ -115,8 +115,15 @@ class Router
     }
 
     public function getCurrentURL()
-    {
-   
+    {   
         return $this->url.$this->getUri();
     }
+
+    public function redirect($route)
+    {
+        header('Location: '.getenv('URL').'/'.$route);
+        exit;
+    }
+
+
 }

@@ -35,8 +35,7 @@ class Queue
             return $queue->next($request);
         };
 
-        return (new self::$map[$middleware])->handle($request, $next);
-    
+        return (new self::$map[$middleware])->handle($request, $next);    
     }
 
     public static function setMap($map)
