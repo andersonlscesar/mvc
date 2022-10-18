@@ -16,4 +16,4 @@ CREATE TABLE usuarios(
     senha VARCHAR(255) NOT NULL
 );
 
-INSERT INTO usuarios(nome, email, senha) VALUES ('Anderson Cesar', 'anderson@gmail.com');
+INSERT INTO usuarios(nome, email, senha) VALUES ('Anderson Cesar', 'anderson@gmail.com', '$2y$10$oFCOPSEtq2Ni/RhRAOjD7eJxPn7c4Zu9yPGRMJeeCMXM3MByqarV2');

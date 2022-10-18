@@ -2,6 +2,7 @@
 namespace App\Controller\Admin;
 use App\Utils\View;
 use App\Model\Entity\Usuario;
+use App\Session\Admin\Login as SessionLogin;
 
 class Login extends Page
 {
@@ -10,6 +11,7 @@ class Login extends Page
         $status = !is_null($errorMessage) ? View::render('admin/login/status', [
             'mensagem' => $errorMessage
         ]) : '';
+
         $content = View::render('admin/login', [
             'status' => $status
         ]);
@@ -32,5 +34,13 @@ class Login extends Page
             $request->getRouter()->redirect('admin/login?status=senha-email-incorretos');
         }
 
+        SessionLogin::login($user);
+        $request->getRouter()->redirect('admin');
+    }
+
+    public static function setLogout($request)
+    {
+        SessionLogin::logout();
+        $request->getRouter()->redirect('admin/login');
     }
 }
