@@ -1,17 +1,17 @@
 <?php
 namespace App\Controller\Admin;
+
 use App\Utils\View;
 use App\Model\Entity\Usuario;
 use App\Session\Admin\Login as SessionLogin;
+use App\Controller\Admin\Alert;
 
 class Login extends Page
 {
-    public static function renderContent($request, $errorMessage = null) 
+    public static function renderContent($request) 
     {
-        $status = !is_null($errorMessage) ? View::render('admin/login/status', [
-            'mensagem' => $errorMessage
-        ]) : '';
-
+        $gets = $request->getQueryParams();
+        $status = isset($gets['error']) ? Alert::getError('Usuário ou senha incorretos') : '';
         $content = View::render('admin/login', [
             'status' => $status
         ]);
@@ -27,11 +27,11 @@ class Login extends Page
         $user = Usuario::getUserByEmail($email);
 
         if(!$user instanceof Usuario) {
-            $request->getRouter()->redirect('admin/login?status=usuario-nao-cadastrado');
+            $request->getRouter()->redirect('admin/login?error=usuario-nao-cadastrado');
         }
 
         if(!password_verify($senha, $user->senha)) {
-            $request->getRouter()->redirect('admin/login?status=senha-email-incorretos');
+            $request->getRouter()->redirect('admin/login?error=senha-email-incorretos');
         }
 
         SessionLogin::login($user);
