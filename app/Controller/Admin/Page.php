@@ -12,4 +12,14 @@ class Page
             'content'   => $content
         ]);
     }
+
+
+    public static function renderPanel($title, $content, $currentModule)
+    {
+        $contentPanel = View::render('admin/panel', [
+            'menu'      => 'olá, mundo',
+            'content'   => $content
+        ]);
+        return self::renderMainLayout($title, $contentPanel);
+    }
 }

@@ -9,6 +9,6 @@ class Home extends Page
     public static function renderContent($request)
     {
         $content = View::render('admin/modules/home/index', []);
-        return Parent::renderMainLayout('Home - ADM', $content);
+        return Parent::renderPanel('HOME - ADM', $content, 'Home');
     }
 }
