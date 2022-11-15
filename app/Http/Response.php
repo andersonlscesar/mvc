@@ -41,6 +41,9 @@ class Response
             case 'text/html':
                 print $this->content;
                 exit;
+            case 'application/json':
+                print json_encode($this->content, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                exit;
         }
     }
 }
