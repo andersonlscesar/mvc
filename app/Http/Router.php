@@ -72,6 +72,11 @@ class Router
         return $this->addRoute('PUT', $route, $params);
     }
 
+    public function delete($route, $params = [])
+    {
+        return $this->addRoute('DELETE', $route, $params);
+    }
+
     private function getUri()
     {
         $uri = $this->request->getUri();

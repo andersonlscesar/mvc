@@ -77,4 +77,50 @@ class Testimony extends Api
             'data'      => $testimony->data
         ];
     }
+
+    public static function setEditTestimony($request, $id)
+    {
+        if(!is_numeric($id)) {
+            throw new \Exception('ID Inválido', 404);
+        }
+        
+        $post = $request->getPostVars();
+        $testimony = EntityDepoimento::getTestimoniesById($id);
+
+        if(!$testimony instanceof EntityDepoimento) {
+            throw new \Exception('Depoimento não encontrado', 404);
+        }
+
+        if(!isset($post['nome']) || !isset($post['mensagem'])) {
+            throw new \Exception('Os campos nome e mensagem são obrigatórios', 400);
+        }
+        $testimony->nome = $post['nome'];
+        $testimony->mensagem = $post['mensagem'];
+        $testimony->atualizar($id);        
+        return [
+            'id'        => (int) $testimony->id,
+            'nome'      => $testimony->nome,
+            'mensagem'  => $testimony->mensagem,
+            'data'      => $testimony->data
+        ];
+    }
+
+    public static function setDeleteTestimony($id) 
+    {
+        if(!is_numeric($id)) {
+            throw new \Exception('ID Inválido', 404);
+        }
+        $testimony = EntityDepoimento::getTestimoniesById($id);
+
+        if(!$testimony instanceof EntityDepoimento) {
+            throw new \Exception('Depoimento não encontrado', 404);
+        }
+
+        $testimony->delete($id);
+        return [
+            'success' => true
+        ];
+   
+    }
+
 }
