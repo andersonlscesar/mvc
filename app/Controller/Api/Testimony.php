@@ -57,4 +57,24 @@ class Testimony extends Api
         ];
 
     }
+
+    public static function setNewTestimony($request)
+    {
+        $post = $request->getPostVars();
+        if(!isset($post['nome']) || !isset($post['mensagem'])) {
+            throw new \Exception('Os campos nome e mensagem são obrigatórios', 400);
+        }
+        // Novo depoimento
+
+        $testimony = new EntityDepoimento;
+        $testimony->nome = $post['nome'];
+        $testimony->mensagem = $post['mensagem'];
+        $testimony->cadastrar();
+        return [
+            'id'        => (int) $testimony->id,
+            'nome'      => $testimony->nome,
+            'mensagem'  => $testimony->mensagem,
+            'data'      => $testimony->data
+        ];
+    }
 }
