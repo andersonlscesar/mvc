@@ -23,7 +23,8 @@ Queue::setMap([
     'required-admin-login'  => App\Http\Middleware\RequireAdminLogin::class,
     'api'                   => App\Http\Middleware\Api::class,
     'user-basic-auth'       => App\Http\Middleware\UserBasicAuth::class,
-    'jwt-auth'              => App\Http\Middleware\JwtAuth::class
+    'jwt-auth'              => App\Http\Middleware\JwtAuth::class,
+    'cache'                 => App\Http\Middleware\Cache::class
 ]);
 
 // Define os middlewares que serão carregados em todas as rotas

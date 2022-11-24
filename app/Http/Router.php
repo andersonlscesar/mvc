@@ -52,6 +52,8 @@ class Router
             $params['variables'] = $matches[1];
         }
 
+        $route = rtrim($route, '/');
+
         $patternRoute = '/^'.str_replace('/', '\/', $route).'$/';
         $this->routes[$patternRoute][$method] = $params;
       
