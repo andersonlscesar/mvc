@@ -26,3 +26,10 @@ $router->delete('/api/v1/testimonies/{id}', [
     'middlewares'   => ['api', 'user-basic-auth'],
     fn($id) => new Response(200, Api\Testimony::setDeleteTestimony($id), 'application/json')
 ]);
+
+// Rota de consulta do usuário atual
+
+$router->get('/api/v1/jwt/me', [
+    'middlewares'   => ['api', 'jwt-auth'],
+    fn($request) => new Response(200, ['success' => true ], 'application/json')
+]);

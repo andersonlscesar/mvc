@@ -145,4 +145,6 @@ class Usuario extends Page
         $request->getRouter()->redirect('admin/usuarios?status=deleted');
 
     }
+
+
 }

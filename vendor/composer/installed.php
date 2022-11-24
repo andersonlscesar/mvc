@@ -3,7 +3,7 @@
         'name' => 'anderson/mvc',
         'pretty_version' => 'dev-11-jwt',
         'version' => 'dev-11-jwt',
-        'reference' => '32f05cd7d2dd485598875a686a125cdfe58d64fc',
+        'reference' => '8a3078b5620541e09994ed3e3dc7b7dc9920e360',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'anderson/mvc' => array(
             'pretty_version' => 'dev-11-jwt',
             'version' => 'dev-11-jwt',
-            'reference' => '32f05cd7d2dd485598875a686a125cdfe58d64fc',
+            'reference' => '8a3078b5620541e09994ed3e3dc7b7dc9920e360',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

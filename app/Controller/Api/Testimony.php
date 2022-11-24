@@ -122,5 +122,10 @@ class Testimony extends Api
         ];
    
     }
+    
 
+    public static function getCurrentUser($request)
+    {
+        
+    }
 }
